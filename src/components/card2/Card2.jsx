@@ -1,0 +1,35 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+import "./Card2.css"
+
+function Card2(nombrePokemon2) {
+    const [pokemon,setPokemon] = useState();
+    
+    console.log(nombrePokemon2.nombrePokemon2)
+
+    useEffect(() => {axios.get('https://pokeapi.co/api/v2/pokemon/'+nombrePokemon2.nombrePokemon2)
+    .then(function (response) {
+      console.log(response.data);
+      setPokemon(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    .finally(function () {
+    })
+}, []);
+
+  return (
+  <>
+        { pokemon &&
+        <div className="card">
+          <h1>{pokemon.name}</h1>
+          <h2>{pokemon.id}</h2>
+          <img src={pokemon.sprites.front_shiny}></img>
+        </div>
+      }
+  </>
+  )
+}
+
+export default Card2

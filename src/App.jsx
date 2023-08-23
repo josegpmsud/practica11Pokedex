@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import React from "react";
 import Card from "./components/card/Card";
+import Card2 from "./components/card2/Card2";
 
 const baseURL = "https://pokeapi.co/api/v2/pokemon";
 
@@ -33,8 +34,6 @@ export default function App() {
   if (!poke) return null;
 
   return (
-
-
     <>
     <input placeholder='Ingrese el Nombre del pokemon' onChange={(e)=>setNombrePokemon(e.target.value)}></input>
     <button onClick={obtenerPokemon}>Buscar</button>
@@ -45,21 +44,31 @@ export default function App() {
         <img src={pokemon.sprites.front_shiny}></img>
       </>
     }
-
+    <div className="listCard">
       {poke.map((e)=>{
       return (
       <>
-        <h1>{e.name}</h1>
-        <h1>{e.url}</h1>
+        <div className="contCard">
+        <Card2
+          nombrePokemon2={e.name}>
+         </Card2>
+        <a href={e.url}>Detalles</a>
+        </div>
 
       </>)
+   
     })}
+      </div>
+
     </>
   );
 }
 
 
+/*
 
+
+*/
 
 
 
