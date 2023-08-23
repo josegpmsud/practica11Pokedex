@@ -14,6 +14,7 @@ function Card2(nombrePokemon2) {
     })
     .catch(function (error) {
       console.log(error);
+      alert("Ingresa un nombre o un id correcto por favor")
     })
     .finally(function () {
     })
@@ -24,9 +25,10 @@ function Card2(nombrePokemon2) {
         { pokemon &&
         <div className="card">
           <section>
-            
+
             <h3>{pokemon.name}</h3>
             <h2>{pokemon.id}</h2>
+            
 
             </section>
             <img src={pokemon.sprites.front_shiny}></img>

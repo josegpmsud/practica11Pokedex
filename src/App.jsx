@@ -9,7 +9,7 @@ const baseURL = "https://pokeapi.co/api/v2/pokemon";
 
 export default function App() {
   const [pokemon,setPokemon] = useState();
-  const [nombrePokemon, setNombrePokemon] = useState('');
+  const [nombrePokemon, setNombrePokemon] = useState('1');
 
   const obtenerPokemon = () => {axios.get('https://pokeapi.co/api/v2/pokemon/'+nombrePokemon)
       .then(function (response) {
@@ -43,7 +43,13 @@ export default function App() {
       <>
         <h1>{pokemon.name}</h1>
         <h2>{pokemon.id}</h2>
+        <section className="details">
+                <p>Peso: {pokemon.weight} </p>
+                <p>Altura: {pokemon.height} </p>
+        </section>
         <img src={pokemon.sprites.front_shiny}></img>
+        <img src={pokemon.forms.url}></img>
+
       </>
     }
     </section>
