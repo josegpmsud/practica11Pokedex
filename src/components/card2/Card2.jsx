@@ -4,7 +4,7 @@ import "./Card2.css"
 
 function Card2(nombrePokemon2) {
     const [pokemon,setPokemon] = useState();
-    
+
     console.log(nombrePokemon2.nombrePokemon2)
 
     useEffect(() => {axios.get('https://pokeapi.co/api/v2/pokemon/'+nombrePokemon2.nombrePokemon2)
@@ -23,9 +23,13 @@ function Card2(nombrePokemon2) {
   <>
         { pokemon &&
         <div className="card">
-          <h1>{pokemon.name}</h1>
-          <h2>{pokemon.id}</h2>
-          <img src={pokemon.sprites.front_shiny}></img>
+          <section>
+            
+            <h3>{pokemon.name}</h3>
+            <h2>{pokemon.id}</h2>
+
+            </section>
+            <img src={pokemon.sprites.front_shiny}></img>
         </div>
       }
   </>

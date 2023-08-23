@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import Card from "./components/card/Card";
 import Card2 from "./components/card2/Card2";
+import './App.css'
 
 const baseURL = "https://pokeapi.co/api/v2/pokemon";
 
@@ -34,7 +35,8 @@ export default function App() {
   if (!poke) return null;
 
   return (
-    <>
+    <div className="contMain">
+    <section>
     <input placeholder='Ingrese el Nombre del pokemon' onChange={(e)=>setNombrePokemon(e.target.value)}></input>
     <button onClick={obtenerPokemon}>Buscar</button>
     { pokemon &&
@@ -44,23 +46,23 @@ export default function App() {
         <img src={pokemon.sprites.front_shiny}></img>
       </>
     }
+    </section>
+
     <div className="listCard">
       {poke.map((e)=>{
       return (
       <>
-        <div className="contCard">
-        <Card2
-          nombrePokemon2={e.name}>
-         </Card2>
-        <a href={e.url}>Detalles</a>
-        </div>
 
+        <Card2
+          nombrePokemon2={e.name}
+          url={e.url}>
+         </Card2>
       </>)
-   
+
     })}
       </div>
 
-    </>
+    </div>
   );
 }
 
